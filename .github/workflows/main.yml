@@ -13,16 +13,21 @@ jobs:
     steps:
       - name: git-checkout
         uses: actions/checkout@v2
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '22'
-          cache: 'pnpm'
 
-      - name: Setup pnpm
+      - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9
-          run_install: true # Runs pnpm install after setup
+          run_install: false
+
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      
+      - name: Intall dependencies
+        run: pnpm install
 
       - name: Build site
         run: pnpm build
