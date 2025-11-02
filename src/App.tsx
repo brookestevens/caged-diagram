@@ -165,7 +165,6 @@ function App() {
 
   function handleMetromoneClick(isClick: boolean) {
     if (isClick) {
-      setActiveRow(Math.floor(Math.random() * 7));
       setHighlight([Math.floor(Math.random() * 7)]);
       setActiveNote(prevState => {
         return (prevState + 1) % shuffledNotes.length;
